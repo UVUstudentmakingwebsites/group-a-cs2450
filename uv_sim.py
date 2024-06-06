@@ -83,8 +83,13 @@ class UVSim:
             print(f"Instruction Counter: {self.instruction_counter}")
 
     def read(self, operand):
-        value = int(input("Enter a value: "))
-        self.memory[operand] = value
+        while True:
+            value = input("Enter a 4-digit value: ")
+            if value.isdigit() and len(value) == 4:
+                self.memory[operand] = int(value)
+                break
+            else:
+                print("Invalid input. Enter a 4-digit number.")
 
     def write(self, operand):
         print(f"Value at memory location {operand}: {self.memory[operand]}")
